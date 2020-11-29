@@ -24,7 +24,7 @@ const server = http.createServer(app);
 // make socketio using http server
 const io = socketio(server);
 // you can choose any number you want xxxx
-const port = 3000;
+const port = 1234;
 
 const botName = 'live chat bot';
 
@@ -46,7 +46,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-mongoose.connect('mongodb://localhost:27017/liveChat', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb+srv://AzozAdmin:AzozTest123@cluster0.vnzqz.mongodb.net/liveChat?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 // there is deprecated warning so if we add this below it will remove the warning 
 mongoose.set('useCreateIndex', true);
 console.log('we are connected now')
@@ -104,7 +104,7 @@ const usersSchema = new mongoose.Schema({
                   req.session.password = req.body.password; 
                   
                   
-            if (err) { console.log(err); res.send('error')}
+            if (err) { console.log(err); res.send('<h1>Email used please write another email')}
             passport.authenticate('local')(req,res,function(){
                 res.redirect('/main')
             });
@@ -264,7 +264,12 @@ const usersSchema = new mongoose.Schema({
 
     })
     app.get('/chat',function(req,res){
+      if(req.isAuthenticated()){
         res.render('chat')
+      }
+      else{
+        res.redirect('/login')
+      }
     });
 
           // an event when the user connect to the socket

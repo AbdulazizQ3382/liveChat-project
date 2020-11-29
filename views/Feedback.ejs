@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>feedback page</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+  <!-- Start your project here-->  
+  <style>
+
+    
+  
+    @media (max-width: 740px) {
+      html,
+      body,
+      header,
+      .view {
+        height: 100vh;
+      }
+    }
+
+    /* .top-nav-collapse {
+      background-color: #563e91 !important;
+    }
+  
+    .navbar:not(.top-nav-collapse) {
+      background: transparent !important;
+    }
+  
+    @media (max-width: 991px) {
+     .navbar:not(.top-nav-collapse) {
+      background: #563e91 !important;
+     }
+    }
+    
+    .rgba-gradient {
+      background: linear-gradient(45deg, rgba(213, 15, 61, 0.6), rgba(13, 17, 198, 0.69) 100%);
+    }
+  .row{
+    height: 400px;
+  } */
+  body{
+    background: #f5f5f5;
+}
+form{
+  box-shadow: 0 1px 4px rgba(24,28,33,0.012);
+  background-color: white;
+
+}
+  </style>
+  </head>
+  <body>
+  <!-- Main navigation -->
+  <header>
+    <!--Navbar -->
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="#">Live chat</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/main">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/UserName_info">user account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Feedback">Feedback</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">logout</a>
+      </li>
+
+      <!-- Dropdown -->
+    
+
+    </ul>
+    <!-- Links -->
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+  </header>
+  <br><br>
+  <div class="container">
+    <!-- Default form register -->
+    <form class="text-center border border-light p-5" action="/feedback" method="POST">
+
+      <p class="h4 mb-4">Fill the form</p>
+
+      <div class="form-row mb-4">
+          <div class="col">
+              <!-- First name -->
+              <input type="text" name="title" id="defaultRegisterFormFirstName" class="form-control" placeholder="Your feedback title">
+          </div>
+      </div>
+
+      <!-- text for feedback -->
+<div class="form-group">
+  <textarea name="description" class="form-control rounded-0" id="exampleFormControlTextarea2" rows="3" placeholder="Write your feedback"></textarea>
+</div>
+      
+
+
+
+      <!-- Submit button -->
+      <button class="btn btn-primary my-4 btn-block" type="submit">Submit</button>
+
+      <hr>
+
+
+    </form><br>
+
+    
+    <% if(message){ %>
+    <div class="alert alert-primary" role="alert">
+      <%=message%>
+    </div>
+ <% } %>
+<!-- Default form register -->
+  </div>
+  <!-- Main navigation -->
+  <!-- End your project here-->
+
+  <!-- jQuery -->
+<script type="text/javascript" src="node_modules/mdbootstrap/js/jquery.min.js"></script>
+<script type="text/javascript" src="node_modules/mdbootstrap/js/popper.min.js"></script>
+<script type="text/javascript" src="node_modules/mdbootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="node_modules/mdbootstrap/js/mdb.min.js"></script>
+<script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
+ 
+<!-- Include a polyfill for ES6 Promises (optional) for IE11 -->
+<script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8/dist/polyfill.js"></script>
+  <!-- Your custom scripts (optional) -->
+  <script type="text/javascript"></script>
+
+</body>
+</html>

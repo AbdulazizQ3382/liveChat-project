@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Main page</title>
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+<!-- Google Fonts -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<!-- Bootstrap core CSS -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+<!-- Material Design Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css" />
+
+  <!-- Start your project here-->  
+  <style>
+
+    
+/*   
+    @media (max-width: 740px) {
+      html,
+      body,
+      header,
+      .view {
+        height: 100vh;
+      }
+    }
+    @media (max-width: 2000px) {
+      html,
+      body,
+      header,
+      .view {
+        height: 70vh;
+      }
+    } */
+
+    /* .top-nav-collapse {
+      background-color: #563e91 !important;
+    }
+  
+    .navbar:not(.top-nav-collapse) {
+      background: transparent !important;
+    }
+  
+    @media (max-width: 991px) {
+     .navbar:not(.top-nav-collapse) {
+      background: #563e91 !important;
+     }
+    } */
+    
+    .rgba-gradient {
+      background: linear-gradient(45deg, rgba(213, 15, 61, 0.6), rgba(13, 17, 198, 0.69) 100%);
+    }
+    .formCon {
+      margin-top: 20vh;
+  }
+  .comp{
+    background: #7386ff;
+  }
+  </style>
+  </head>
+  <body>
+  <!-- Main navigation -->
+  <header>
+    <!--Navbar -->
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-dark primary-color">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="#">Live chat</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#basicExampleNav"
+    aria-controls="basicExampleNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="basicExampleNav">
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/main">Home
+          <span class="sr-only">(current)</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/UserName_info">user account</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/Feedback">Feedback</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/logout">logout</a>
+      </li>
+
+      <!-- Dropdown -->
+    
+
+    </ul>
+    <!-- Links -->
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+  </header>
+
+  <div class="join-container">
+    <header class="join-header">
+      <h1><i class="fas fa-smile"></i>Enjoy your chat</h1>
+    </header>
+    <main class="join-main">
+      <form action="chat">
+        <div class="form-controler">
+          <label for="username">Nick Name</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            placeholder="what people called you ?"
+            required
+          />
+        </div>
+        <div class="form-controler">
+          <label for="room">Room</label>
+          <select name="room" id="room">
+            <option value="JavaScript">JavaScript</option>
+            <option value="Python">Python</option>
+            <option value="PHP">PHP</option>
+            <option value="C#">C#</option>
+            <option value="Ruby">Ruby</option>
+            <option value="Java">Java</option>
+          </select>
+        </div>
+        <button type="submit" class="btn">Join Chat</button>
+      </form>
+    </main>
+  </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </body>
+  </html>
