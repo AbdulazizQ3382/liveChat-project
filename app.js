@@ -23,8 +23,7 @@ const {
 const server = http.createServer(app);
 // make socketio using http server
 const io = socketio(server);
-// you can choose any number you want xxxx
-const port = 1234;
+
 
 const botName = 'live chat bot';
 
@@ -325,8 +324,13 @@ const usersSchema = new mongoose.Schema({
           
 
 
-
-    
+          // make heroku choose the port
+          let port = process.env.PORT;
+          if (port == null || port == "") {
+            // if heroku didn't set up port we set up it
+            port = 1234;
+          }
+          
     server.listen(port,()=>{
-        console.log('user Joind')
+        console.log('user Joind to server successfully')
     })
