@@ -55,7 +55,6 @@ const usersSchema = new mongoose.Schema({
     password: String,
     firstName: String,
     lastName: String,
-    nickName:String,
     feedbackTitle:String,
     feedbackDescription:String
 
@@ -95,7 +94,7 @@ const usersSchema = new mongoose.Schema({
         // });
 
         
-        User.register({username:req.body.username,firstName: req.body.firstName,lastName: req.body.lastName, nickName:req.body.nickname}, req.body.password , function(err, user) {
+        User.register({username:req.body.username,firstName: req.body.firstName,lastName: req.body.lastName}, req.body.password , function(err, user) {
   
                   console.log(user);
                 //   saving data in the session array.
@@ -191,7 +190,9 @@ const usersSchema = new mongoose.Schema({
                     console.log('what happend !'+err)
                 }else{
                     console.log(data)
-                    res.render('UserName_info',{NickName:data.nickName,FirstName:data.firstName,LastName:data.lastName,Email:data.username,message:''})
+                    req.session.firstName = data.firstName
+                    req.session.lastName = data.lastName
+                    res.render('UserName_info',{FirstName:data.firstName,LastName:data.lastName,Email:data.username,message:''})
                 }
             });
         
@@ -206,11 +207,12 @@ const usersSchema = new mongoose.Schema({
 
         // to find the document and update it 
         // the third parameter means return the document after it modified . 
-       let doc = await User.findOneAndUpdate({ username: req.session.username }, {username: req.body.username, firstName : req.body.firstName , lastName : req.body.lastName , nickName : req.body.nickName }, {
+       let doc = await User.findOneAndUpdate({ username: req.session.username }, {username: req.body.username, firstName : req.body.firstName , lastName : req.body.lastName}, {
             new: true
           });
          console.log(doc.firstName);
          req.session.username = req.body.username;
+         
          console.log(req.session);
 
          req.logout();
@@ -233,11 +235,10 @@ const usersSchema = new mongoose.Schema({
             }
             else {
                     passport.authenticate('local')(req,res,function(){
-                        req.session.nickName = req.body.nickName;
                         req.session.firstName = req.body.firstName;
                         req.session.lastName = req.body.lastName;
 
-                    res.render('UserName_info',{NickName:req.body.nickName,FirstName:req.body.firstName,LastName:req.body.lastName,Email:user.username,message:'General info Updated succesfully'});
+                    res.render('UserName_info',{FirstName:req.body.firstName,LastName:req.body.lastName,Email:user.username,message:'General info Updated succesfully'});
 
                     });
             }
@@ -252,13 +253,13 @@ const usersSchema = new mongoose.Schema({
     //    To be continuoued .
     if(req.body.currentPass === req.session.password ){
         if(req.body.newPass === req.body.reNewPass)
-          res.render('UserName_info',{NickName:req.session.nickName,FirstName:req.session.firstName,LastName:req.session.lastName,Email:req.session.username,message:'Password Updated succesfully'});
+          res.render('UserName_info',{FirstName:req.session.firstName,LastName:req.session.lastName,Email:req.session.username,message:'Password Updated succesfully'});
         else 
-        res.render('UserName_info',{NickName:req.session.nickName,FirstName:req.session.firstName,LastName:req.session.lastName,Email:req.session.username,message:'your new password doesn\'t match with the  new repeated password'});
+        res.render('UserName_info',{FirstName:req.session.firstName,LastName:req.session.lastName,Email:req.session.username,message:'your new password doesn\'t match with the  new repeated password'});
           
     }
     else {
-        res.render('UserName_info',{NickName:req.session.nickName,FirstName:req.session.firstName,LastName:req.session.lastName,Email:req.session.username,message:'Your current password is wrong , please write your correct password'});
+        res.render('UserName_info',{FirstName:req.session.firstName,LastName:req.session.lastName,Email:req.session.username,message:'Your current password is wrong , please write your correct password'});
     }
 
     })

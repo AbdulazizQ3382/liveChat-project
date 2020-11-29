@@ -53,14 +53,27 @@ chatForm.addEventListener('submit', e => {
 // Output message to DOM
 function outputMessage(message) {
   const div = document.createElement('div');
-  div.classList.add('message');
+  
   // div.innerHTML = `<p class="meta">Brad <span>9:12pm</span></p>
   // <p class="text">
   //   ${message}
   // </p>`;
-
+if(username === message.username){
+  div.classList.add('message');
   const p = document.createElement('p');
   p.classList.add('meta');
+  p.innerText = "YOU";
+  p.innerHTML += `<span>${message.time}</span>`;
+  div.appendChild(p);
+  const para = document.createElement('p');
+  para.classList.add('text');
+  para.innerText = message.text;
+  div.appendChild(para);
+  document.querySelector('.chat-messages').appendChild(div);
+}else{
+  div.classList.add('message2');
+  const p = document.createElement('p');
+  p.classList.add('meta2');
   p.innerText = message.username;
   p.innerHTML += `<span>${message.time}</span>`;
   div.appendChild(p);
@@ -69,6 +82,7 @@ function outputMessage(message) {
   para.innerText = message.text;
   div.appendChild(para);
   document.querySelector('.chat-messages').appendChild(div);
+}
 }
 
 // Add room name to DOM

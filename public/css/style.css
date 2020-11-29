@@ -3,6 +3,7 @@
 :root {
 	--dark-color-a: #667aff;
 	--dark-color-b: #7386ff;
+	--light-color-b: #9aa8ff;
 	--light-color: #e6e9ff;
 	--success-color: #5cb85c;
 	--error-color: #d9534f;
@@ -98,11 +99,25 @@ a {
 	border-radius: 5px;
 	overflow-wrap: break-word;
 }
+.chat-messages .message2 {
+	padding: 10px;
+	margin-bottom: 15px;
+	background-color: var(--light-color-b);
+	border-radius: 5px;
+	overflow-wrap: break-word;
+}
 
 .chat-messages .message .meta {
 	font-size: 15px;
 	font-weight: bold;
 	color: var(--dark-color-b);
+	opacity: 0.7;
+	margin-bottom: 7px;
+}
+.chat-messages .message .meta2 {
+	font-size: 15px;
+	font-weight: bold;
+	color: var(--light-color);
 	opacity: 0.7;
 	margin-bottom: 7px;
 }

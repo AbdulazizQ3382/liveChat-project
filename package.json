@@ -12,7 +12,7 @@
   "repository": {
     "type": "git",
     "url": "https://git.heroku.com/glacial-mountain-30907.git"
-},
+  },
   "author": "Abdulaziz Qannam",
   "license": "ISC",
   "dependencies": {
@@ -21,6 +21,7 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "moment": "^2.29.1",
+    "moment-timezone": "^0.5.32",
     "mongoose": "^5.10.7",
     "nodemon": "^2.0.6",
     "passport": "^0.4.1",

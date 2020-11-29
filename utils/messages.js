@@ -1,4 +1,4 @@
-const moment = require('moment');
+var moment = require('moment-timezone');
 
 function formatMessage(username, text) {
   return {
@@ -6,7 +6,7 @@ function formatMessage(username, text) {
     username,
     text,
     // hours , minutes , am or pm 
-    time: moment().format('h:mm a')
+    time: moment().tz('Asia/Riyadh').format('h:mm a')
   };
 }
 
