@@ -179,7 +179,7 @@ const usersSchema = new mongoose.Schema({
           });
 
           console.log(doc.feedbackTitle);
-          res.render('feedback',{message:'We saved your feedback, thanks for your time.'});
+          res.render('Feedback',{message:'We saved your feedback, thanks for your time.'});
 
     })
 
