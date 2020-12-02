@@ -8,6 +8,10 @@ const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true
 });
 
+if(username == undefined || room == undefined){
+  location.replace("/main");
+}
+
 const socket = io();
 
 // Join chatroom
@@ -43,6 +47,10 @@ chatForm.addEventListener('submit', e => {
   // }
 
   // Emit message to server
+  if(username == undefined || room == undefined){
+    location.replace("/main");
+  }
+  
   socket.emit('chatMessage', msg);
 
   // Clear input

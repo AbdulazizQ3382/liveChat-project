@@ -261,8 +261,8 @@ const usersSchema = new mongoose.Schema({
     else {
         res.render('UserName_info',{FirstName:req.session.firstName,LastName:req.session.lastName,Email:req.session.username,message:'Your current password is wrong , please write your correct password'});
     }
-
     })
+
     app.get('/chat',function(req,res){
       if(req.isAuthenticated()){
         res.render('chat')
@@ -272,15 +272,18 @@ const usersSchema = new mongoose.Schema({
       }
     });
 
+
           // an event when the user connect to the socket
           io.on('connection', socket => {
             socket.on('joinRoom', ({ username, room }) => {
               const user = userJoin(socket.id, username, room);
+
+              
           
               socket.join(user.room);
           
               // Welcome current user
-              socket.emit('message', formatMessage(botName, 'Welcome to ChatCord!'));
+              socket.emit('message', formatMessage(botName, 'Welcome to liveChat!'));
           
               // Broadcast when a user connects
               socket.broadcast
@@ -299,9 +302,16 @@ const usersSchema = new mongoose.Schema({
           
             // Listen for chatMessage
             socket.on('chatMessage', msg => {
+              try {
               const user = getCurrentUser(socket.id);
+            
+               
+             
           
               io.to(user.room).emit('message', formatMessage(user.username, msg));
+            }catch (e) {
+              next(new Error("unknown user"));
+            }
             });
           
             // Runs when client disconnects
