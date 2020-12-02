@@ -45,6 +45,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
+
+
 mongoose.connect('mongodb+srv://AzozAdmin:AzozTest123@cluster0.vnzqz.mongodb.net/liveChat?retryWrites=true&w=majority', {useNewUrlParser: true, useUnifiedTopology: true});
 // there is deprecated warning so if we add this below it will remove the warning 
 mongoose.set('useCreateIndex', true);
@@ -252,8 +254,24 @@ const usersSchema = new mongoose.Schema({
     app.post('/UserName_info:account-change-password',function(req,res){
     //    To be continuoued .
     if(req.body.currentPass === req.session.password ){
-        if(req.body.newPass === req.body.reNewPass)
+
+        if(req.body.newPass === req.body.reNewPass){
+
+          User.findByUsername(req.session.username).then(function(sanitizedUser){
+            if (sanitizedUser){
+                sanitizedUser.setPassword(req.body.reNewPass, function(){
+                    return sanitizedUser.save();
+                    
+                });
+            } else {
+                res.status(500).json({message: 'This user does not exist'});
+            }
+        }).catch(function(err){
+          console.error(err+"We can't update your password at this time");
+        });
+
           res.render('UserName_info',{FirstName:req.session.firstName,LastName:req.session.lastName,Email:req.session.username,message:'Password Updated succesfully'});
+        }
         else 
         res.render('UserName_info',{FirstName:req.session.firstName,LastName:req.session.lastName,Email:req.session.username,message:'your new password doesn\'t match with the  new repeated password'});
           
@@ -304,10 +322,6 @@ const usersSchema = new mongoose.Schema({
             socket.on('chatMessage', msg => {
               try {
               const user = getCurrentUser(socket.id);
-            
-               
-             
-          
               io.to(user.room).emit('message', formatMessage(user.username, msg));
             }catch (e) {
               next(new Error("unknown user"));
