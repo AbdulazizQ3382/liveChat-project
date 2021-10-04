@@ -1,5 +1,5 @@
 # liveChat-project
-This project was for The SWE444 Course We build it on 4 sprints using scrumb framework
+This project was for The SWE444 Course We build it on 4 sprints using scrum framework
 
 Project link :https://glacial-mountain-30907.herokuapp.com/
 
